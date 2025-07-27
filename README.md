@@ -1,4 +1,4 @@
-# Metal detector "YASHKA & MASHKA" on MCU ARM Cortex-M4 STM32F401RCT6
+# Metal detector "YASHKA & MASHKA" on MCU STM32F401RCT6
 Metal detector IB on MCU ARM Cortex-M4 STM32F401RCT6. FM Transmitter KT0803L. Default frequency 108.00 MHz (channel 2160). EEPROM AT24C16N. 
 Search coil from "Terminator" metal detector. LC circuit "TX" with parallel resonance. Frequency "TX" 19300 Hz (min. 6000 Hz - max. 31000 Hz). LCD display HD44780. 
 The electromagnetic imbalance of the IB sensor should be 10-15 millivolts (maximum 20-30 mV when adjusting the input amplifier). 
