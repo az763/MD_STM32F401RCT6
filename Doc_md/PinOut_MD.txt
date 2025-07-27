@@ -1,0 +1,155 @@
+============================================================
+STM32F401RCT6 - MD "Yashka & Mashka" 
+============================================================
+/* Cигнал "TX" */
+/* TIM3 */ TIMER 3 - Output Clock = Frequency "Tx"
+Pin (27) PB1 - TIM3_CH4, Output pin "TX".
+
+Slave Mode - External Clock Mode 1;
+Trigger Source - ITR0;// From Update Event TIM1.
+Channel 4 - Output Compare CH4;
+
+Counter setting:
+Prescaler (PSC - 16 bits value) - 0.
+Counter Mode - Up.
+Counter Period = 7;// 8 - 1 // NB_SAMPLE - 1
+Internal Clock Division (CKD) - No Division.
+auto-reload preload - Disable.
+Slave Mode Controller - ETR Mode 1.
+
+Trigger Output (TRGO) Parameters:
+Master/Slave Mode (MSM bit) - Disable.
+Trigger Event Selection - Reset (UG bit from TIMx_EGR).
+
+Output Compare Channel 4: 
+Mode - Toggle on match.
+Pulse (16 bits value) - 7;// Phase "TX".
+Output compare preload - Enable. !!!
+CH Polarity - High.
+============================================================
+/* TIM1 */ TIMER 1 - Output Clock = (Frequency "Tx" * 8)
+Pin (41) PA8 - TIM1_CH1, No Output pin. No check Frequency.
+
+Slave Mode - Disable;
+Trigger Source - Disable.
+Clock Source - Internal Clock.
+Cannel 1 - Output Compare No Output.
+
+Counter setting:
+Prescaler (PSC - 16 bits value) - 0.
+Counter mode - Up.
+Counter period = 999. AutoReload Register - 16 bits value.
+Internal Clock Division (CKD) - No Division.
+Repetition Counter (RCR - 8 bits value) - 0.
+auto-reload preload - Enable. !!!
+
+Trigger Output (TRGO) Parameters:
+Master/Slave Mode (MSM bit) - Disable.
+Trigger Event Selection - Update Event. !!!
+
+Output Compare No Output Cannel 1:
+Mode - Toggle on Match.
+Pulse (16 bits value) - 499.
+Output compare preload - Enable. !!!
+CH Polarity - High.
+CH Idle State - Reset.
+============================================================
+/* TIM2 */ TIMER 2 - Timer Base for Oversampling
+Pin (14) PA0 - TIM2_CH1, No Output pin. No check Frequency.
+
+Slave Mode - Disable;
+Trigger Source - Disable.
+Clock Source - Internal Clock.
+Cannel 1 - Output Compare No Output.
+
+Counter setting:
+Prescaler (PSC - 16 bits value) - 83. (84 - 1)
+Counter mode - Up.
+Counter period = 499. (500 - 1) AutoReload Register - 32 bits value.
+Internal Clock Division (CKD) - No Division.
+auto-reload preload - Enable. !!!
+
+Trigger Output (TRGO) Parameters:
+Master/Slave Mode (MSM bit) - Disable.
+Trigger Event Selection - Update Event. !!!
+
+Output Compare No Output Cannel 1:
+Mode - Toggle on Match.
+Pulse (32 bits value) - 124.
+Output compare preload - Enable. !!!
+CH Polarity - High.
+============================================================
+============================================================
+/* Cигнал "RX" */ 
+Pin (22) - PA6 Input mode.
+ADC1: - IN6.
+NVIC Setting:
+ADC1 global interrupt - Disable.
+DMA2 stream0 global interrupt - Enable.
+DMA Setting:
+DMA Request - ADC1; Stream - DMA2 Stream 0; Direction - Peripheral To Memory; Priority - High.
+GPIO Setting:
+PA6 -> ADC1_IN6 -> n/a -> Analog mode -> No pull-up and no pull-down -> n/a -> -> No Modified.
+Parameter Settings:
+ACDs_Common Settings: Mode - independed mode.
+ADC_Settings:
+Clock Prescaller - PCLK2 Divided by 4.
+Resolution - 12 bits (15 ADC Clock cycles).
+Data Alignment - Right alignment.
+Scan Conversion Mode - Disabled.
+Continuous Conversion Mode - Disabled.
+Discontinuous Conversion Mode - Disabled.
+DMA Continuous Requests - Disabled.
+End Of Conversion Selection - EOC flag at the end of single channel conversion.
+ADC_Regular_ConversionMode:
+Number Of Conversion - 1.
+External Trigger Conversion Source - Timer 1 Capture Compare 1 event.
+External Trigger Conversion Edge - Trigger detection on the rising edge.
+Rank - 1; Channel - Channel 6; Sampling Time - 3 Cycles.
+ADC_Injected_Conversion mode:
+Number Of Conversion - 0.
+WatchDog:
+Enable Analog WatchDog Mode - Disabled.
+============================================================
+============================================================
+General Purpose Input / Output (GPIO)
+/* Signal pins */
+Port A
+PA1 (15) - GPIO mode: Output Push Pull - LCD1602 Screen Backlight.
+PA3 (17) - GPIO mode: Alternate Function Push Pull - TIM5_CH4 - SOUND.
+PA6 (22) - GPIO mode: Analog mode - ADC1_IN6 - "RX".
+Port B
+PB1 (27) - GPIO mode: Alternate Function Push Pull - TIM3_CH4 - "TX".
+PB1 Setup Maximum Output Speed - High.
+The pins - No pull-up and No pull-down
+/* Output data for LCD1602 */
+GPIO mode: Output Push Pull - No pull-up and No pull-down 
+Port A
+PA15 (50) - E LCD1602
+Port B
+PB3 (55) - RS LCD1602
+PB12 (33) - Bit 7 Data LCD1602
+PB13 (34) - Bit 6 Data LCD1602
+PB14 (35) - Bit 5 Data LCD1602
+PB15 (36) - Bit 4 Data LCD1602
+Port C
+PC14 (3) - I2C SDA  - EEPROM AT24C16N
+PC15 (4) - I2C SCL  - EEPROM AT24C16N
+/* Buttons BTN0 - BTN5 */
+GPIO mode: Input mode - Pull-up - Modified.
+Port B
+PB4 (56) - BTN5 SW6 - MENU  - "Menu / Esc"
+PB5 (57) - BTN4 SW5 - LEFT  - "Left (-) / Backlight"
+PB6 (58) - BTN3 SW4 - UP    - "Up / Barrier+ / Autotune"
+PB7 (59) - BTN2 SW3 - DOWN  - "Down / Barrier- / Autotune"
+PB8 (61) - BTN1 SW2 - RIGHT - "Right (+) / PinPointer"
+PB9 (62) - BTN0 SW1 - OK    - "Enter / OK / Ground balance"
+============================================================
+/* Hanges pcb v1.4 */
+PA2 (16) - Analog mode ADC1_IN2 - for Check battery voltage.
+PA4, PA5 - GPIO mode: Output Push Pull - No pull-up and No pull-down 
+PA4 (20) - I2C SCL pin KT0803L FM transmitter 
+PA5 (21) - I2C SDA pin KT0803L FM transmitter 
+PB2 (28) - GPIO mode: Output Push Pull - No pull-up and No pull-down. Enable and disable chip KT0803L FM transmitter.  
+============================================================
+
