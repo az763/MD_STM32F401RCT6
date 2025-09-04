@@ -6,7 +6,7 @@ This is an experimental level project.
 
 # PCB v1.5 mod 05 
 ![Image alt](https://github.com/alek76-2/MD_STM32F401RCT6/blob/main/PCB/PCB_MD_STM32F401RCT6_1.5_mod_05_OK_foto_00.JPG)
-![Image alt](https://github.com/alek76-2/MD_STM32F401RCT6/blob/main/PCB/PCB_MD_STM32F401RCT6_1.5_mod_05_OK_foto_02.JPG.JPG)
+![Image alt](https://github.com/alek76-2/MD_STM32F401RCT6/blob/main/PCB/PCB_MD_STM32F401RCT6_1.5_mod_05_OK_foto_02.JPG)
 
 DD8 search coil. Frequency 19 kHz.
 The "TX" winding is 38 turns (19+19) and the "RX" winding is 38 turns. Circuit capacitors "TX" and "RX" with a capacity of 100 nf. The diameter of the mandrel is 170 mm and the diameter of the winding wire is 0.4 mm.
